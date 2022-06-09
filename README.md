@@ -46,7 +46,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 "Autism Helper" is a flutter mobile application that helps autistic patients to communicate with others and make their lives easier by gathering multi help full services in one application.
 So "Autism Helper" can be the right tool to help parents to understand the needs of their autistic child.
 
