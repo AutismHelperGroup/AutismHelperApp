@@ -13,7 +13,7 @@
   <h3 align="center">Autism Helper App</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A flutter mobile application that helps autistic patients!
     <br />
     <a href=""><strong>Explore the docs »</strong></a>
     <br />
