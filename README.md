@@ -97,5 +97,5 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- Screen Shots & IMAGES -->
 <img src="Screenshots/signInPage.png" alt="SignInPage" >
 <img src="Screenshots/homePage.jpg" alt="HomePage" >
-<img src="Screenshots/albumPage.png" alt="AlbumPage" >
+<img src="Screenshots/albumPage.jpg" alt="AlbumPage" >
 <img src="Screenshots/transPage.png" alt="TransPage" >
