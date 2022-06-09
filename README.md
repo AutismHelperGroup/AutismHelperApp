@@ -95,7 +95,7 @@ Use this space to list resources you find helpful and would like to give credit 
 
 
 <!-- Screen Shots & IMAGES -->
-<img src="Screenshots/signInPage.png" alt="SignInPage" >
-<img src="Screenshots/homePage.jpg" alt="HomePage" >
-<img src="Screenshots/albumPage.jpg" alt="AlbumPage" >
-<img src="Screenshots/transPage.png" alt="TransPage" >
+<img src="Screenshots/signInPage.png" alt="SignInPage" width="100" height="140" >
+<img src="Screenshots/homePage.jpg" alt="HomePage" width="100" height="140" >
+<img src="Screenshots/albumPage.jpg" alt="AlbumPage" width="100" height="140"  >
+<img src="Screenshots/transPage.png" alt="TransPage" width="100" height="140"  >
