@@ -105,7 +105,7 @@ class _SignInPageState extends State<SignInPage> {
 
   SizedBox logoBox() {
     return SizedBox(
-            child: Image.asset('images/Logo2.png'),
+            child: Image.asset('images/logo.png'),
             height: 80.0,
           );
   }
