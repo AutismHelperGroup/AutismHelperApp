@@ -12,7 +12,7 @@ import 'dart:async';
 
 
 
-class AlbumPage extends StatefulWidget {
+class AlbumPage extends StatelessWidget{
    const AlbumPage({Key? key , required this.album, required this.user, required this.database}) : super(key: key);
 
   final Album album;
@@ -20,17 +20,12 @@ class AlbumPage extends StatefulWidget {
   final Database database;
 
   @override
-  State<AlbumPage> createState() => _AlbumPageState();
-}
-
-class _AlbumPageState extends State<AlbumPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarDesign(
         aTitle: Center(child: Center(child: Center(
           child: Text(
-            widget.album.label ,
+            album.label ,
             style: GoogleFonts.abel(
                 fontSize: 30,
                 color: Colors.black,
@@ -60,8 +55,8 @@ class _AlbumPageState extends State<AlbumPage> {
   Widget _buildContent() {
 
     Stream<QuerySnapshot> pictureStream=  FirebaseFirestore.instance.collection('Picture')
-        .where("AlbumID", isEqualTo: widget.album.id ,)
-        .where("UserID", whereIn: ['Admin',widget.user.userId] ).snapshots();
+        .where("AlbumID", isEqualTo: album.id ,)
+        .where("UserID", whereIn: ['Admin', user.userId] ).snapshots();
 
 
     return StreamBuilder<QuerySnapshot>(
