@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -32,7 +33,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   late User1 user;
 
-  late Image image;
+  late String imageUrl;
   UploadTask? task;
   PlatformFile? pickedFile;
 
@@ -49,10 +50,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     user = widget.user;
-    image = Image.network(widget.user.userProfilePictureUrl);
+    imageUrl =  widget.user.userProfilePictureUrl;
     return Scaffold(
-        appBar: AppBar(
-          title: Center(
+        appBar: AppBarDesign(
+          aTitle: Center(
             child: Text(
               'Edit Profile Page',
               style: GoogleFonts.abel(
@@ -61,7 +62,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          leading: IconButton(
+          aLeading: IconButton(
               icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
@@ -69,20 +70,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               onPressed: () {
                 Navigator.pop(context,user);
               }),
-          actions: [
-            GestureDetector(
-              onTap: () {},
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 12, bottom: 12, right: 5, left: 5),
-                child: ProfilePicture(
-                  picture: Image.network(user.userProfilePictureUrl),
-                  pictureSize: 30,
-                  pictureRadius: 20,
-                ),
-              ),
-            ), //(ProfilePicture)
-          ],
+
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -95,7 +83,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ProfilePicture(
                         pictureSize: 130,
                         pictureRadius: 200,
-                        picture: image,
+                        pictureUrl: imageUrl,
                       ),
                       Positioned(
                         bottom: 1,

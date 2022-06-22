@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:autism_helper_project/models/user.dart';
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
 import 'package:autism_helper_project/screens/common_widgets/profile_picture.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -37,15 +38,15 @@ class _AddImageState extends State<AddImage> {
   Widget build(BuildContext context) {
     picture.userID = widget.user.userId;
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
+      appBar: AppBarDesign(
+        aTitle: Center(
           child: Text(
             'Add a new image',
             style: GoogleFonts.abel(
                 fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
-        leading: IconButton(
+        aLeading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
@@ -53,20 +54,7 @@ class _AddImageState extends State<AddImage> {
             onPressed: () {
               Navigator.pop(context,picture);
             }),
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(top: 12, bottom: 12, right: 5, left: 5),
-              child: ProfilePicture(
-                picture: Image.network(widget.user.userProfilePictureUrl),
-                pictureSize: 30,
-                pictureRadius: 60,
-              ),
-            ),
-          ), //(ProfilePicture)
-        ],
+
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -76,7 +64,7 @@ class _AddImageState extends State<AddImage> {
               Stack(
                 children: [
                   ProfilePicture(
-                    picture: Image.network(picture.pictureUrl),
+                    pictureUrl:  picture.pictureUrl,
                     pictureSize: 220,
                     pictureRadius: 20,
                   ),

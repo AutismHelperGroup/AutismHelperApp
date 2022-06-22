@@ -1,7 +1,8 @@
 
 import 'package:autism_helper_project/models/user.dart';
-import 'package:autism_helper_project/screens/albums_screens/add_image.dart';
 import 'package:autism_helper_project/screens/albums_screens/edit_image.dart';
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,8 +27,8 @@ class _MyImagesState extends State<MyImages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Center(child: Center(
+      appBar: AppBarDesign(
+        aTitle: Center(child: Center(child: Center(
           child: Text(
             'My Images' ,
             style: GoogleFonts.abel(
@@ -36,7 +37,7 @@ class _MyImagesState extends State<MyImages> {
                 fontWeight: FontWeight.bold),
           ),
         ),),),
-        leading: IconButton(
+        aLeading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
@@ -44,10 +45,6 @@ class _MyImagesState extends State<MyImages> {
             onPressed: () {
               Navigator.pop(context);
             }),
-        actions: [
-          IconButton(onPressed: (){ Navigator.of(context).push(MaterialPageRoute(
-              fullscreenDialog: true, builder: (context) => AddImage(user: widget.user,database: widget.database))); }, icon: const Icon(Icons.add_box_outlined),color: Colors.black,) //(ProfilePicture)
-        ],
       ),
       body: SafeArea(child: Center(
         child: Padding(
@@ -56,7 +53,6 @@ class _MyImagesState extends State<MyImages> {
         ),
       )),
     );
-
   }
 
   Widget _buildContent() {
@@ -93,8 +89,8 @@ class _MyImagesState extends State<MyImages> {
                       );
                       setState((){});
                       },
-                    child: Image.network(
-                      picture.pictureUrl,
+                    child: CachedNetworkImage(
+                      imageUrl:picture.pictureUrl,
                       width: 150,
                       height: 150,
                     ),

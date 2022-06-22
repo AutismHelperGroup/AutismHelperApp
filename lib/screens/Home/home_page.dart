@@ -1,6 +1,6 @@
 import 'package:autism_helper_project/screens/Home/about_us_page.dart';
 import 'package:autism_helper_project/screens/Home/my_images.dart';
-import 'package:autism_helper_project/screens/profile/profile_page.dart';
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
 import 'package:autism_helper_project/services/translator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,7 +13,6 @@ import '../../models/picture.dart';
 import '../../services/database.dart';
 import '../albums_screens/album_page.dart';
 import '../common_widgets/buttons/raised_button.dart';
-import '../common_widgets/profile_picture.dart';
 import 'package:autism_helper_project/models/user.dart';
 import '../common_widgets/show_alert_dialog.dart';
 import 'contact_us_page.dart';
@@ -31,17 +30,17 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  var _icon = Icons.toggle_off_outlined;
+  //var _icon = Icons.toggle_off_outlined;
   User1 user = User1(
       userId: '000',
       name: 'User',
       userProfilePictureUrl:
           'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80');
-  Translator translator = Translator();
+
   late Database database = Provider.of<Database>(context, listen: false,);
   late DocumentReference<Map<String, dynamic>> userData = database.getUser();
   bool isDone = false;
-
+  Translator translator = Translator();
 
   @override
   void initState() {
@@ -65,43 +64,10 @@ class _HomePageState extends State<HomePage> {
       }
     });
     return  Scaffold(
-        appBar: AppBar(
-          title: Center(
+        appBar: AppBarDesign(
+          aTitle: Center(
               child: Image.asset('images/title.png', scale: 18)),
-          leading: menu(),
-          actions: [
-            GestureDetector(
-              onTap: () async {
-                if (user.userId != '000') {
-                  ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-                  user = await Navigator.of(context).push(
-                      MaterialPageRoute(
-                          fullscreenDialog: true,
-                          builder: (_) => ProfilePage(user: user,database: database,)
-                      )
-                  );
-                  setState((){});
-                } else {
-                  showAlertDialog(
-                    context,
-                    title: 'Warning',
-                    content: 'You need to sign up to view profile',
-                    defaultActionText: 'OK',
-                    cancelActionText: '',
-                  );
-                }
-              },
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(top: 12, bottom: 12, right: 5, left: 5),
-                child: ProfilePicture(
-                  picture: Image.network(user.userProfilePictureUrl),
-                  pictureSize: 30,
-                  pictureRadius: 60,
-                ),
-              ),
-            ), //(ProfilePicture)
-          ],
+          aLeading: menu(),
         ),
         body: _buildContent(),
       );
@@ -263,7 +229,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  IconButton buildDarkModeButton() {
+  /*IconButton buildDarkModeButton() {
     return IconButton(
       icon: Icon(
         _icon,
@@ -283,6 +249,8 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+   *///darkModeButton
 
   selectImage(Album album) async {
 

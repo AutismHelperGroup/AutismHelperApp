@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
 import 'package:autism_helper_project/screens/common_widgets/profile_picture.dart';
 import 'package:autism_helper_project/services/database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -33,15 +34,15 @@ class _EditImageState extends State<EditImage> {
     picture = widget.picture;
     item = picture.albumID;
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text(
+      appBar: AppBarDesign(
+        aTitle: Center(child: Text(
           'Edit an image',
           style: GoogleFonts.abel(
               fontSize: 25,
               color: Colors.black,
               fontWeight: FontWeight.bold),
         ),),
-        leading: IconButton(
+        aLeading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
@@ -49,20 +50,7 @@ class _EditImageState extends State<EditImage> {
             onPressed: () {
               Navigator.pop(context,picture);
             }),
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 12, bottom: 12, right: 5, left: 5),
-              child: ProfilePicture(
-                picture: Image.network(widget.user.userProfilePictureUrl),
-                pictureSize: 30,
-                pictureRadius: 60,
-              ),
-            ),
-          ), //(ProfilePicture)
-        ],
+
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -72,8 +60,7 @@ class _EditImageState extends State<EditImage> {
               Stack(
                 children: [
                   ProfilePicture(
-                    picture:
-                    Image.network(picture.pictureUrl),
+                    pictureUrl: picture.pictureUrl,
                     pictureSize: 220,
                     pictureRadius: 20,
                   ),

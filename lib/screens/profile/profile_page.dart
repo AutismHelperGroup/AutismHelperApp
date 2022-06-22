@@ -1,4 +1,5 @@
 import 'package:autism_helper_project/models/user.dart';
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
 import 'package:autism_helper_project/screens/common_widgets/profile_picture.dart';
 import 'package:autism_helper_project/screens/profile/edit_profile_page.dart';
 import 'package:flutter/material.dart';
@@ -24,14 +25,14 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     user = widget.user;
     return Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text( 'Profile Page',
+        appBar: AppBarDesign(
+          aTitle: Center(child: Text( 'Profile Page',
             style: GoogleFonts.abel(
                 fontSize: 25,
                 color: Colors.black,
                 fontWeight: FontWeight.bold),
           ),),
-          leading: IconButton(
+          aLeading: IconButton(
               icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
@@ -39,20 +40,6 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
-          actions: [
-            GestureDetector(
-              onTap: (){},
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 12, bottom: 12, right: 5, left: 5),
-                child: ProfilePicture(
-                  picture :Image.network(user.userProfilePictureUrl),
-                  pictureSize: 30,
-                  pictureRadius: 60,
-                ),
-              ),
-            ), //(ProfilePicture)
-          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -61,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: [
                   ProfilePicture(
-                    picture :Image.network(user.userProfilePictureUrl),
+                    pictureUrl : user.userProfilePictureUrl,
                     pictureSize: 130,
                     pictureRadius: 200,
                   ),

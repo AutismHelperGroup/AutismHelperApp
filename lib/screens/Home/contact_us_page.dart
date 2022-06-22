@@ -1,4 +1,4 @@
-import 'package:autism_helper_project/screens/common_widgets/profile_picture.dart';
+import 'package:autism_helper_project/screens/common_widgets/app_bar_design.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,8 +35,8 @@ class _ContactUsPageState extends State <ContactUsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Center(child: Center(
+        appBar: AppBarDesign(
+          aTitle: Center(child: Center(
             child: Text(
               'Contact Us',
               style: GoogleFonts.abel(
@@ -46,7 +46,7 @@ class _ContactUsPageState extends State <ContactUsPage> {
             ),
           )
           ),
-          leading: IconButton(
+          aLeading: IconButton(
               icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
@@ -54,18 +54,6 @@ class _ContactUsPageState extends State <ContactUsPage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
-          actions: [
-            GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 12, bottom: 12, right: 5, left: 5),
-                child: ProfilePicture(
-                  picture: Image.network(widget.user.userProfilePictureUrl),
-                  pictureSize: 30, pictureRadius: 60,
-                ),
-              ),
-            ), //(ProfilePicture)
-          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
