@@ -90,12 +90,12 @@ class _HomePageState extends State<HomePage> {
             return const Text("Loading");
           }
           return Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
             child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 15.0,
-                mainAxisSpacing: 15.0,
+                crossAxisSpacing: 20.0,
+                mainAxisSpacing: 20.0,
               ),
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
