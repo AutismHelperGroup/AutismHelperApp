@@ -3,7 +3,6 @@ import 'package:autism_helper_project/screens/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'Services/auth.dart';
@@ -28,8 +27,8 @@ class MyApp extends StatelessWidget {
         title: 'Autism Helper',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          appBarTheme: const AppBarTheme(backgroundColor: kAppbarBackground),
-          scaffoldBackgroundColor: kScaffoldBackground,
+          appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFE4E4E4)),
+          scaffoldBackgroundColor: const Color(0xFFF0F0F0),
           iconTheme: const IconThemeData(color: Colors.black, size: 30),
           fontFamily: GoogleFonts.montserrat().fontFamily,
           textTheme: GoogleFonts.montserratTextTheme(),
