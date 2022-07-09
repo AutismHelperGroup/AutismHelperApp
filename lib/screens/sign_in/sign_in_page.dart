@@ -248,7 +248,9 @@ class _SignInPageState extends State<SignInPage> {
   List<Widget> signInWithRowChildren(BuildContext context) {
     return <Widget>[
       CustomRaisedButton(
-          onPressed: () {},
+          onPressed: () {
+            _signInWithTwitter(context);
+          },
           color: Colors.white,
           child: SizedBox(
             width: 25,
@@ -257,7 +259,9 @@ class _SignInPageState extends State<SignInPage> {
           )),
       const SizedBox(width: 35),
       CustomRaisedButton(
-          onPressed: () {},
+          onPressed: () {
+            _signInWithFacebook(context);
+          },
           color: Colors.white,
           child: SizedBox(
             width: 25,
@@ -322,6 +326,66 @@ class _SignInPageState extends State<SignInPage> {
       );
     } finally {}
   }
+
+  Future<void> _signInWithFacebook(BuildContext context) async {
+    final AuthBase? auth = Provider.of<AuthBase>(context, listen: false);
+    try {
+      final User? user2 = await auth?.signInWithGoogle();
+      var user = {
+        "Name": user2!.displayName,
+        "Email": user2.email,
+        "IDD": user2.uid,
+        "ProfilePictureURL":
+        'https://firebasestorage.googleapis.com/v0/b/autismhelperdatabase.appspot.com/o/UsersProfilePhoto%2FuserLogo.png?alt=media&token=30b77c9b-8469-40dc-a2c8-94b48ae1ea51'
+      };
+      CollectionReference database =
+      FirebaseFirestore.instance.collection('/User');
+      await database
+          .doc(user2.uid)
+          .set(user)
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+    } on FirebaseAuthException catch (e) {
+      showAlertDialog(
+        context,
+        content: e.message,
+        title: "Sign in failed",
+        cancelActionText: "",
+        defaultActionText: "OK",
+      );
+    } finally {}
+  }
+
+
+  Future<void> _signInWithTwitter(BuildContext context) async {
+    final AuthBase? auth = Provider.of<AuthBase>(context, listen: false);
+    try {
+      final User? user2 = await auth?.signInWithGoogle();
+      var user = {
+        "Name": user2!.displayName,
+        "Email": user2.email,
+        "IDD": user2.uid,
+        "ProfilePictureURL":
+        'https://firebasestorage.googleapis.com/v0/b/autismhelperdatabase.appspot.com/o/UsersProfilePhoto%2FuserLogo.png?alt=media&token=30b77c9b-8469-40dc-a2c8-94b48ae1ea51'
+      };
+      CollectionReference database =
+      FirebaseFirestore.instance.collection('/User');
+      await database
+          .doc(user2.uid)
+          .set(user)
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+    } on FirebaseAuthException catch (e) {
+      showAlertDialog(
+        context,
+        content: e.message,
+        title: "Sign in failed",
+        cancelActionText: "",
+        defaultActionText: "OK",
+      );
+    } finally {}
+  }
+
 
   void _signUpButton(BuildContext context) {
     Navigator.of(context).push(
