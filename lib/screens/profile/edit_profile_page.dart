@@ -168,6 +168,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             ),
                             onPressed: () {
                               saveEntries();
+                              Navigator.pop(context,user);
                             },
                             child: const Text(
                               "SAVE",
@@ -190,13 +191,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: TextFormField(
-        controller: nameController,
-        decoration: InputDecoration(
-          hintText: user.name,
+        controller: nameController
+          ..text = user.name,
+        decoration: const InputDecoration(
           fillColor: Colors.white,
-          border: const UnderlineInputBorder(),
+          border: UnderlineInputBorder(),
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          labelStyle: const TextStyle(fontSize: 20),
+          labelStyle: TextStyle(fontSize: 20),
         ),
         keyboardType: TextInputType.name,
         textInputAction: TextInputAction.next,
@@ -229,7 +230,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: TextButton(onPressed: () async {
-
       },
       child: const Text('Change Your Password'),
       ),
@@ -259,6 +259,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     user.name = name;
     widget.database.updateUserdata(user);
     setState((){});
+
   }
 
   void yourChoice(BuildContext context) {
