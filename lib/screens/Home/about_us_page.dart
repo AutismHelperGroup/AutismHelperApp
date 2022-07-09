@@ -45,6 +45,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
+          user: widget.user,
         ),
         body: buildContent());
   }

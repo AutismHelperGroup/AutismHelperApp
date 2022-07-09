@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AppBarDesign extends StatefulWidget implements PreferredSizeWidget {
-  const AppBarDesign({Key? key, required this.aTitle, required this.aLeading}) : super(key: key);
+  const AppBarDesign({Key? key, required this.aTitle, required this.aLeading, required this.user}) : super(key: key);
   final Widget aTitle;
   final Widget aLeading;
+  final User1 user;
 
   @override
   State<AppBarDesign> createState() => _AppBarDesignState();
@@ -20,11 +21,6 @@ class AppBarDesign extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _AppBarDesignState extends State<AppBarDesign> {
-  User1 user = User1(
-      userId: '000',
-      name: 'User',
-      userProfilePictureUrl:
-      'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80');
 
   late Database database = Provider.of<Database>(context, listen: false,);
 
@@ -36,12 +32,12 @@ class _AppBarDesignState extends State<AppBarDesign> {
       actions: [
         GestureDetector(
           onTap: () async {
-            if (user.userId != '000') {
+            if (widget.user.userId != '000') {
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-              user = await Navigator.of(context).push(
+              await Navigator.of(context).push(
                   MaterialPageRoute(
                       fullscreenDialog: true,
-                      builder: (_) => ProfilePage(user: user,database: database,)
+                      builder: (_) => ProfilePage(user: widget.user,database: database,)
                   )
               );
               setState((){});
@@ -59,7 +55,7 @@ class _AppBarDesignState extends State<AppBarDesign> {
             padding:
             const EdgeInsets.only(top: 12, bottom: 12, right: 5, left: 5),
             child: ProfilePicture(
-              pictureUrl: user.userProfilePictureUrl,
+              pictureUrl: widget.user.userProfilePictureUrl,
               pictureSize: 30,
               pictureRadius: 60,
             ),

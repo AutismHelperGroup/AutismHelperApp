@@ -70,6 +70,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               onPressed: () {
                 Navigator.pop(context,user);
               }),
+          user: widget.user,
 
         ),
         body: SingleChildScrollView(

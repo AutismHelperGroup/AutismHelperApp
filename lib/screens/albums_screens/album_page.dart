@@ -23,6 +23,7 @@ class AlbumPage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarDesign(
+        user: user,
         aTitle: Center(child: Center(child: Center(
           child: Text(
             album.label ,

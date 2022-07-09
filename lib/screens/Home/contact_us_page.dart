@@ -54,6 +54,7 @@ class _ContactUsPageState extends State <ContactUsPage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
+          user: widget.user,
         ),
         body: SingleChildScrollView(
           child: Padding(

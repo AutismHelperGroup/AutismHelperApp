@@ -40,6 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
+          user: widget.user,
         ),
         body: SingleChildScrollView(
           child: Padding(

@@ -68,6 +68,7 @@ class _HomePageState extends State<HomePage> {
           aTitle: Center(
               child: Image.asset('images/title.png', scale: 18)),
           aLeading: menu(),
+          user: user,
         ),
         body: _buildContent(),
       );

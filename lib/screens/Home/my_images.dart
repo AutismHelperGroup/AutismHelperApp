@@ -45,6 +45,7 @@ class _MyImagesState extends State<MyImages> {
             onPressed: () {
               Navigator.pop(context);
             }),
+        user: widget.user,
       ),
       body: SafeArea(child: Center(
         child: Padding(

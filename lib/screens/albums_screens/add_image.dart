@@ -53,7 +53,7 @@ class _AddImageState extends State<AddImage> {
             ),
             onPressed: () {
               Navigator.pop(context,picture);
-            }),
+            }), user: widget.user,
 
       ),
       body: SingleChildScrollView(

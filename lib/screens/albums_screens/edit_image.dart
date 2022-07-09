@@ -50,6 +50,7 @@ class _EditImageState extends State<EditImage> {
             onPressed: () {
               Navigator.pop(context,picture);
             }),
+        user: widget.user,
 
       ),
       body: SingleChildScrollView(
