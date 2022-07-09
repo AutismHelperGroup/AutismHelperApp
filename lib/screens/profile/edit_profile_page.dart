@@ -230,6 +230,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: TextButton(onPressed: () async {
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: user.email);
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Password Reset Email Sent , Check Spam Folder Please")));
       },
       child: const Text('Change Your Password'),
       ),
