@@ -8,6 +8,7 @@ class FirestoreService {
 
   Future<void> setData({ required String path, required Map<String, dynamic> data, }) async {
     var newDocRef = FirebaseFirestore.instance.collection(path).doc();
+
     data.addAll({
       'IDD': newDocRef.id
     });
@@ -27,6 +28,7 @@ class FirestoreService {
     if (kDebugMode) {
       print('delete: $path');
     }
+
     await reference.delete();
   }
 
