@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
-import 'package:provider/provider.dart';
-import '../../Services/auth.dart';
 import '../../models/user.dart';
 import '../../services/database.dart';
 import '../common_widgets/profile_picture.dart';
@@ -226,7 +224,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   Padding buildPasswordField(BuildContext context) {
 
-    final AuthBase? auth = Provider.of<AuthBase>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: TextButton(onPressed: () async {
@@ -236,25 +233,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
       child: const Text('Change Your Password'),
       ),
     );
-  }
-
-  Future<void> resetPassword(BuildContext context) async {
-    final AuthBase? auth = Provider.of<AuthBase>(context, listen: false);
-    try {
-      /*await auth?.*/
-    } on FirebaseAuthException catch (e) {
-    switch (e.code) {
-    case "operation-not-allowed":
-    if (kDebugMode) {
-    print("Anonymous auth hasn't been enabled for this project.");
-    }
-    break;
-    default:
-    if (kDebugMode) {
-    print("Unknown error.");
-    }
-    }
-    }
   }
 
   void saveEntries() {

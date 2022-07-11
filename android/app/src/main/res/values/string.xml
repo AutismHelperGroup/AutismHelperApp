@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Autism Helper</string>
+    <string name="facebook_app_id">523791329436022</string>
+    <string name="fb_login_protocol_scheme">fb523791329436022</string>
+    <string name="facebook_client_token">f6a790dd862bd28899d502d3d475fdc7</string>
+</resources>

@@ -300,8 +300,10 @@ class _SignInPageState extends State<SignInPage> {
 
   Future<void> _signInWithGoogle(BuildContext context) async {
     final AuthBase? auth = Provider.of<AuthBase>(context, listen: false);
+
     try {
       final User? user2 = await auth?.signInWithGoogle();
+
       var user = {
         "Name": user2!.displayName,
         "Email": user2.email,
@@ -330,7 +332,7 @@ class _SignInPageState extends State<SignInPage> {
   Future<void> _signInWithFacebook(BuildContext context) async {
     final AuthBase? auth = Provider.of<AuthBase>(context, listen: false);
     try {
-      final User? user2 = await auth?.signInWithGoogle();
+      final User? user2 = await auth?.signInWithFacebook();
       var user = {
         "Name": user2!.displayName,
         "Email": user2.email,
@@ -354,7 +356,8 @@ class _SignInPageState extends State<SignInPage> {
         defaultActionText: "OK",
       );
     } finally {}
-  }
+
+    }
 
 
   Future<void> _signInWithTwitter(BuildContext context) async {
